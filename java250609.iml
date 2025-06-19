@@ -8,5 +8,8 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="ojdbc11-21.11.0.0" level="project" />
+    <orderEntry type="library" name="orai18n-21.11.0.0" level="project" />
+    <orderEntry type="library" name="gson-2.8.9" level="project" />
   </component>
 </module>
