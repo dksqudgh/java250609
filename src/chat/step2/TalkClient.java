@@ -35,13 +35,15 @@ public class TalkClient extends JFrame implements ActionListener {
         System.out.println("TalkClient 생성자 호출 성공");
         //input type=text
         jtf_msg.addActionListener(this);
+        jbtn_change.addActionListener(this);
+        jbtn_exit.addActionListener(this);
         //initDisplay();
     }
     //소켓 관련 초기화
     public void init(){
         System.out.println("init() 호출 성공");
         try{
-            socket = new Socket("192.168.0.41", 3000);
+            socket = new Socket("192.168.0.24", 3000);
             oos = new ObjectOutputStream(socket.getOutputStream());
             ois = new ObjectInputStream(socket.getInputStream());
             oos.writeObject(100+"#"+chatName);
@@ -56,7 +58,22 @@ public class TalkClient extends JFrame implements ActionListener {
         System.out.println("콜백메서드");//timeline연관
         Object source = e.getSource();
         String msg = jtf_msg.getText();
-        if(jtf_msg == source){//Enter이벤트
+        if (jbtn_change == source){
+            String afterName = JOptionPane.showInputDialog("변경할 대화명을 입력하세요.");
+            if (afterName == null || afterName.trim().length() == 0){
+                JOptionPane.showMessageDialog(this
+                        ,"변경할 대화명을 입력하세요"
+                        ,"INFO"
+                        ,JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+            try {
+                oos.writeObject(Protocol.CHANGE+"#"+chatName+"#"+afterName);
+            }catch (Exception ex){
+                System.out.println(ex.getMessage());
+            }
+        }
+        else if(jtf_msg == source){//Enter이벤트
             try{
                 oos.writeObject(Protocol.MESSAGE
                         +"#"+chatName

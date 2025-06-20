@@ -20,21 +20,26 @@ public class TalkServer extends JFrame implements Runnable {
     @Override
     public void run() {
         System.out.println("run 호출 성공");
+        //서버에 접속해온 클라이언트 스레드 정보를 관리할
+        //ArrayList 생성하기
         globalList = new ArrayList<>();
+        //클라이언트가 접속해 올 때가지 기다린다.- while
         boolean isStop = false;
-        try{
-            //서버측에서 열어놓은 포트번호 - 클라이언트가 접속해오면 클라이언트측도 포트가 열린다
+        try {
+            //서버측에서 열어놓은 포트 번호 - 클라이언트가 접속해오면
+            //클라이언트측도 포트가 열린다.
             server = new ServerSocket(3000);
-            jta_log.append("Server ready\n");
-            while (!isStop){
-                socket = server.accept();
+            jta_log.append("Server ready....\n");
+            while (!isStop) {
+                socket = server.accept();//new Socket("192.168.0.41",3000)
                 //클라이언트 접속 정보
-                jta_log.append("Client info : "+socket+"\n");
-                System.out.println(globalList.size());//0출력됨 - 사용자가 입장하면 증가됨
+                jta_log.append("client info..."+socket+"\n");
+                //서버에 입장한 클라이언트 수만큼 객체 생성이 된다.
+                //List<TalkServerThread>
                 TalkServerThread tst = new TalkServerThread(this);
                 tst.start();
-            }//while
-        }catch (Exception e){
+            }//end of while
+        }catch(Exception e){
 
         }
     }//end of run
