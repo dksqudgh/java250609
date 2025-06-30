@@ -12,11 +12,11 @@ public class GenericBox<T> {
     public static void main(String[] args) {
         Box box = new Box();
         box.set("키위");
-        String fruit = (String) box.get();
+        String fruit = (String)box.get();
         System.out.println(fruit);//키위
         GenericBox<String> genericBox = new GenericBox<>();
         genericBox.set("사과");
         String fruit2 = genericBox.get();
-        System.out.println(fruit2); //사과
+        System.out.println(fruit2);//사과
     }
 }

@@ -31,7 +31,7 @@ public class RandomGameViewVer2 implements ActionListener {
     public RandomGameViewVer2() {
         System.out.println("디폴트생성자 호출");
         //생성자에 있었던 채번하는 코드 2줄을 nanSu 메서드로 옮김
-        nanSu();
+        //nanSu();
         System.out.println("정답 : " + dap);
         initDisplay();
     }
@@ -50,14 +50,14 @@ public class RandomGameViewVer2 implements ActionListener {
         Object obj = e.getSource();
         if(obj == btnDap){
             nanSu();
-            jta.append("정답은 " + dap + " 입니다. \n" );
+            jta.append("정답은 " + dap + " 입니다. \n");
             count = 0;
         }
         else if(obj == btnNew){
             count = 0;
             nanSu();
             System.out.println("새로 채번된 숫자는 "+dap);
-            jta.append("NewGame\n");
+            jta.append("새게임이 시작되었습니다. \n");
         }
         else if (obj == btnClear) {
             jta.setText("");
@@ -67,7 +67,7 @@ public class RandomGameViewVer2 implements ActionListener {
         }
         else if(obj==jtf){
             String msg = null;
-            System.out.println(jtf.getText());
+            //System.out.println(jtf.getText());
             String s = jtf.getText();
             //파라미터에 문자열을 넣으면 정수로 바꿔주는 메소드가 있다.
             my = Integer.parseInt(s);
@@ -87,10 +87,10 @@ public class RandomGameViewVer2 implements ActionListener {
             jta.append(++count+"회차 : "+my+"-"+msg+"\n");
             jtf.setText("");
         }
-    }
+    }//end of actionPerformed
     public void initDisplay(){
         System.out.println("화면 출력하기");
-        jta.setEditable(false);
+        jta.setEditable(false);// 수정모드를 끄기
         jp_east.setLayout(new GridLayout(4,1));
         jp_east.add(btnNew);//새게임
         jp_east.add(btnClear);//지우기

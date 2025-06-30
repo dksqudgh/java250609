@@ -6,43 +6,53 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class UIMain implements ActionListener {
-    UISub uiSub = new UISub(this); // 한 번만 생성해서 재사용
+    UISub uiSub = new UISub();
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        //생성된 버튼의 라벨 가져오기
+       String command = e.getActionCommand();
+       //입력버튼 누른거야?
+        if(command.equals("입력")){
+            System.out.println("입력 호출");
+            uiSub.jd.setTitle(command);
+            uiSub.jd.setVisible(true);
+        }
+       //수정버튼 눌렀어?
+       else if(command.equals("수정")){
+            System.out.println("수정 호출");
+            uiSub.jd.setTitle("수정");
+            uiSub.jd.setVisible(true);
+        }
+       //상세보기 원해?
+        else if(command.equals("상세보기")){
+            System.out.println("상세보기 호출");
+            uiSub.jd.setTitle(command);
+            uiSub.jd.setVisible(true);
+        }
+    }
+
     JFrame jf = new JFrame();
     JPanel jp_north = new JPanel();
     JButton btnInsert = new JButton("입력");
     JButton btnUpdate = new JButton("수정");
     JButton btnDelete = new JButton("삭제");
     JButton btnDetail = new JButton("상세보기");
-
-    public void initDisplay() {
+    public void initDisplay(){
         btnInsert.addActionListener(this);
         btnUpdate.addActionListener(this);
-        btnDelete.addActionListener(this);
         btnDetail.addActionListener(this);
-
+        btnDelete.addActionListener(this);
         jp_north.setLayout(new FlowLayout(FlowLayout.LEFT));
         jp_north.add(btnInsert);
         jp_north.add(btnUpdate);
         jp_north.add(btnDelete);
         jp_north.add(btnDetail);
-
         jf.add(jp_north);
-        jf.setSize(400, 500);
-        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 창 닫기 동작
-        jf.setLocationRelativeTo(null); // 가운데 정렬
+        jf.setSize(400,500);
         jf.setVisible(true);
     }
-
     public static void main(String[] args) {
-        new UIMain().initDisplay();
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        String command = e.getActionCommand();
-        if (command.equals("입력") || command.equals("수정") || command.equals("상세보기")) {
-            uiSub.jd.setTitle(command);
-            uiSub.jd.setVisible(true);
-        }
+        UIMain ui = new UIMain();
+        ui.initDisplay();
     }
 }

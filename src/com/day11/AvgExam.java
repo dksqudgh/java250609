@@ -1,10 +1,5 @@
 package com.day11;
 
-import com.day4.Notice;
-
-import javax.security.auth.Subject;
-import java.text.Format;
-
 public class AvgExam {
     String[] subject = {"JAVA", "ORACLE", "REACT"};
     String[][] data = {
@@ -33,7 +28,7 @@ public class AvgExam {
     //평균을 구하는 메서드 구현하기
     void avgAccount(){
         for(int j=0;j<data.length;j++){
-            avgs[j] = haps[j]/3.0;
+            avgs[j] = haps[j]/(double)3;
         }
     }
     public static void main(String[] args) {

@@ -17,26 +17,18 @@ import java.util.List;
 import java.util.Vector;
 
 public class DeptList extends JFrame implements ActionListener {
-
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
-        if (btnSelect == src){
-            System.out.println(model.getRowCount()); //0
-            List<DeptVO> dlist = getList();
-            while (model.getRowCount() > 0){
-                model.removeRow(0);
-            }
-                for (int i =0;i < dlist.size(); i++){
-                    DeptVO rdvo = dlist.get(i);
-                    Vector<Object> v = new Vector<>();
-                    v.add(rdvo.getDeptno());
-                    v.add(rdvo.getDname());
-                    v.add(rdvo.getLoc());
-                    model.addRow(v);
-                }
+        if(btnSelect == src){
+            System.out.println(model.getRowCount());//0
+            Vector<String> v = new Vector<>();
+            v.add("10");
+            v.add("영업부");
+            v.add("서울");
+            model.addRow(v);
         }
-    }//end of cationPerformed
+    }//end of actionPerformed
 
     JButton btnSelect = new JButton("조회");
     String[] cols = {"deptno", "dname", "loc"};
@@ -49,15 +41,13 @@ public class DeptList extends JFrame implements ActionListener {
     Connection conn;
     Statement stmt;
     ResultSet rs;
-
-
     public void initDisplay(){
+        btnSelect.addActionListener(this);
+        this.add("North", btnSelect);
         this.add("Center", scrollPane);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setSize(500,500);
         this.setVisible(true);
-        this.add("North",btnSelect);
-        btnSelect.addActionListener(this);
     }
 
     public DeptList() {
@@ -115,8 +105,7 @@ public class DeptList extends JFrame implements ActionListener {
     }// end of getList
 
     public static void main(String[] args) {
-    new DeptList();
+        new DeptList();
+        //initDisplay();
     }
-
-
 }

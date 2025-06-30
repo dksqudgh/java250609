@@ -38,5 +38,9 @@ public class ForExam2 {
         for(DeptVO dvo:dvos){
             System.out.println(dvo.getDeptno()+", "+dvo.getDname()+", "+dvo.getLoc());
         }
+        System.out.println("==========================================================");
+        for(int i=0;i<dvos.length;i++){
+            System.out.println(dvos[i].getDeptno()+", "+dvos[i].getDname()+", "+dvos[i].getLoc());
+        }
     }
 }

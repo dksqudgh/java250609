@@ -6,6 +6,7 @@ import java.util.List;
 public class ListExam3 {
     public static void main(String[] args) {
         //제네릭이 없으면 어떤 타입인지 알수가 없다.
+        //대화명 리스트
         List<Object> nameList = new ArrayList<>();
         boolean isExist = nameList.add("kiwi");
         if(isExist){

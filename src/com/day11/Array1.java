@@ -1,7 +1,5 @@
 package com.day11;
-
-import java.sql.SQLOutput;
-
+// 참조형 : 배열타입, 열거타입, 클래스, 인터페이스
 public class Array1 {
     public static void main(String[] args) {
         //1차배열- 원시형과 참조형
@@ -25,5 +23,4 @@ public class Array1 {
         }
         //2차배열
     }
-
 }

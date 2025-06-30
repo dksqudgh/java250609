@@ -40,13 +40,13 @@ public class ViewChange extends JFrame implements ActionListener {
         Object obj = e.getSource();
         System.out.println(obj);
         if(obj == btn){
-            Container cont = getContentPane();
-            if(jta !=null){
-                cont.remove(jta);
-            }
-            JPanel1 panel1 = new JPanel1();
-            this.add("Center",panel1);
-            cont.revalidate();
+           Container cont = getContentPane();
+           if(jta !=null){
+               cont.remove(jta);
+           }
+           JPanel1 panel1 = new JPanel1();
+           this.add("Center",panel1);
+           cont.revalidate();
         }
     }
 

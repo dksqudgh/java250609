@@ -1,14 +1,14 @@
 package com.day11;
-
-import com.day4.Notice;
-
+//Object VS class
 public class Parameter1 {
     void methodA(int[] haps){
-        for (int hap: haps){
-            System.out.println(hap);
+        if(haps == null){
+            return;
+        }
+        for(int hap: haps){
+            System.out.println(hap);//0 0 0
         }
     }
-
     int[] methodB(){
         return null;
     }
@@ -16,7 +16,6 @@ public class Parameter1 {
         Parameter1 p1 = new Parameter1();
         p1.methodA(new int[]{1,2,3});
         p1.methodA(new int[]{2,4,6});
-        //p1.methodB(); NullPointerException
-        //p1.methodA(null); NullPointerException
+        p1.methodA(null);
     }
 }
